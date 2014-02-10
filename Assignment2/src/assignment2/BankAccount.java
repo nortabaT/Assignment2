@@ -34,8 +34,12 @@ class BankAccount
     
     //constructors
     /**
-     * Create an account with an initial balance.
-     * @param initialBalance     The initial balance of the account
+     * initial constructor for a new client.  
+     *@param checkingAccount         checking account for the client
+     *@param primarySavingsAccount   primary savings account for the client
+     *@param studentLoanAccount      student loan account for the client
+     *@param autoLoanAccount         auto loan account for the client
+     *@param bankAccounts            hash map for the clients bank account
      */
     public BankAccount()
     {
@@ -84,8 +88,7 @@ class BankAccount
     {
     	return accountNumber;
     }
-    
-    
+       
     // Input:
     // transactionInfo[]: A valid transaction input for the Bank to process
     // [0] = customer id (not important for this function)
@@ -126,7 +129,11 @@ class BankAccount
     {
     	return bankAccounts.get(account).getBalance();
     }
-    
+    /*
+     * Transfers funds between accounts
+     * @param account1   account money is coming from 
+     * @param account2   account money will be going to 
+     */
     private boolean transferFunds(double amount, String fromAccount, String toAccount)
     {
     	GenericBankAccount account1 = bankAccounts.get(fromAccount);
@@ -140,14 +147,20 @@ class BankAccount
     	
     	return true;
     }
-    
+    /*
+     * Calculates the interest for appropriate savings accounts
+     * @param result  Confirms the transaction occurred or it did not
+     */
     private boolean calculateInterest(String account)
     {
     	boolean result = bankAccounts.get(account).calculateInterest();
        	
     	return result;
     }
-    
+    /* 
+     * Performs the withdrawal function
+     * @param genAccount  accounts balance information 
+     */
     private boolean withdraw(double amount, String account)
     {
     	
@@ -172,7 +185,9 @@ class BankAccount
     private void deposit(double amount, String account){
     	bankAccounts.get(account).deposit(amount);
     }
-    
+    /* 
+     * Overdraft protection function for checking accounts and primary savings accounts
+     */
     private boolean overdraftProtection(double amount){
     	
     	double checkingAccountBalance = checkingAccount.getBalance();
@@ -180,16 +195,19 @@ class BankAccount
     	
     	if(checkingAccountBalance + savingsAccountBalance >= amount + OVERDRAFT_FEE)
     	{
-    		checkingAccount.withdraw(checkingAccountBalance);
+    		checkingAccount.withdraw(checkingAccountBalance); 		//just to make sure I'm using the right number
     		amount -= checkingAccountBalance;
-    		
+ 		
     		primarySavingsAccount.withdraw(amount + OVERDRAFT_FEE);	//just to make sure I'm using the right number
     		return true;
     	}
     		
     	return false;
     }
-    
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     public String toString()
     {
     	String out = customer + "\n" + checkingAccount + "\n" + primarySavingsAccount + "\n";

@@ -41,9 +41,13 @@ public class Customer {
 	public String getAddress(){
 		return address;
 	}
-	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString()
 	{
-		return "Customer Name: "+name+" ID: "+id;
+		return "Customer Name: "+name+"\n" +
+			   "Customers ID: "+id;
 	}
 }

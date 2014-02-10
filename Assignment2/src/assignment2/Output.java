@@ -1,42 +1,58 @@
 package assignment2;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class Output {
-	
+public class Output 
+	{
+	/*
+	 * I/O for initial greeting
+	 * returns 0 for yes
+	 */
 	public int greeting() 
 	{
-		int answer = JOptionPane.showConfirmDialog(null, "          Welcome to Brantis Bank\n " +
-				                            "Would you like to make a new transaction?");
-		return answer;
+		return JOptionPane.showConfirmDialog(null, "        Welcome to Brantis Bank\n" +
+				                                   "Would you like to make a new transaction?");
 	}
-
-	public void goodbye() 
+	/* 
+	 * I/o goodbye and summary for when the client is finished doing transactions 
+	 */
+	public void goodbye(ArrayList<BankAccount> accounts) 
 	{
+//		for ( String s : transactions )
+//		{
+//			System.out.println("------");
+//			System.out.println(s);
+//		}
+		
+		for(int i = 0; i < accounts.size(); i++)
+		{
+			System.out.println(accounts.get(i));
+		}
 		JOptionPane.showMessageDialog(null, "Goodbye", "Brantis Bank",  JOptionPane.INFORMATION_MESSAGE);
 	}
-	
-	public String getTransaction(){
-		String transaction = JOptionPane.showInputDialog("Please input your transaction.");
-		return transaction;
+	/*
+	 * I/O prompts client for transactions input
+	 */
+	public String getTransaction()
+	{
+		return JOptionPane.showInputDialog("Please input your transaction.");
 	}
-	
-	public void showError(){
+	/*
+	 * I/O for invalid transaction
+	 */
+	public void showError()
+	{
 		JOptionPane.showMessageDialog(null, "Invalid transaction.", "ERROR!",  JOptionPane.INFORMATION_MESSAGE);
 	}
-	
-	public int anotherTransaction() {
-		int answer = JOptionPane.showConfirmDialog(null, "          Welcome to Brantis Bank\n " +
-                "Would you like to make a another transaction?");
-		return answer;
-	}
-	
 	/*
-	 * output summary of the transactions
+	 * I/O for result of the current transaction 
 	 */
-	public void summary() {
-		// TODO Auto-generated method stub
-		
+	public void currentTransaction(ArrayList<BankAccount> accounts, ArrayList<String> output, String[] transaction) 
+	{
+		output.add(accounts.get(0).toString());
+		output.add(accounts.get(1).toString());
+		JOptionPane.showMessageDialog(null, accounts.get(Integer.parseInt(transaction[0])-1), "Current Transaction.",  JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }

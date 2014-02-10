@@ -11,11 +11,14 @@ public class AutoLoanAccount extends SavingsAccount{
 	public AutoLoanAccount(double initialBalance) {
 		super(initialBalance);
 	}
-	
+	/*
+	 * (non-Javadoc)
+	 * @see assignment2.SavingsAccount#toString()
+	 */
     public String toString()
     {
     	NumberFormat formatter = NumberFormat.getCurrencyInstance();
-    	String moneyString = "Savings Account Balance: " + formatter.format(balance);
+    	String moneyString = "Auto Loan Account Balance: " + formatter.format(balance) + "\n";
     	return moneyString;
     }	
 }

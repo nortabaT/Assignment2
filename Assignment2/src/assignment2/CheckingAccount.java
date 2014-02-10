@@ -13,14 +13,20 @@ public class CheckingAccount extends GenericBankAccount{
 	{
 		super(initBalance);
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see assignment2.GenericBankAccount#toString()
+	 */
     public String toString()
     {
     	NumberFormat formatter = NumberFormat.getCurrencyInstance();
-    	String moneyString = "Savings Account Balance: " + formatter.format(balance);
+    	String moneyString = "Checking Account Balance: " + formatter.format(balance);
     	return moneyString;
     }
-
+    /*
+     * (non-Javadoc)
+     * @see assignment2.GenericBankAccount#calculateInterest()
+     */
 	public boolean calculateInterest() 
 	{
 		return false;
