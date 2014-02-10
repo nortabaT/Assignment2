@@ -180,10 +180,10 @@ class BankAccount
     	
     	if(checkingAccountBalance + savingsAccountBalance >= amount + OVERDRAFT_FEE)
     	{
-    		assert(checkingAccount.withdraw(checkingAccountBalance)); 		//just to make sure I'm using the right number
+    		checkingAccount.withdraw(checkingAccountBalance);
     		amount -= checkingAccountBalance;
     		
-    		assert(primarySavingsAccount.withdraw(amount + OVERDRAFT_FEE));	//just to make sure I'm using the right number
+    		primarySavingsAccount.withdraw(amount + OVERDRAFT_FEE);	//just to make sure I'm using the right number
     		return true;
     	}
     		

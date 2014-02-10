@@ -1,18 +1,24 @@
 package assignment2;
 
-public class SavingsAccount extends GenericBankAccount{
+import java.text.NumberFormat;
 
-	protected double interestRate = .4;
+public class SavingsAccount extends GenericBankAccount
+{
+
+	protected double interestRate = .04;
 	
-	public SavingsAccount(double initialBalance) {
+	public SavingsAccount(double initialBalance) 
+	{
 		super(initialBalance);
 	}
 	
-	public SavingsAccount(int accountNum, double initialBalance) {
+	public SavingsAccount(int accountNum, double initialBalance) 
+	{
 		super(accountNum, initialBalance);
 	}
 
-	public boolean calculateInterest(){
+	public boolean calculateInterest()
+	{
 		
 		if(balance >= 1000){
 			balance += balance*interestRate;
@@ -23,16 +29,20 @@ public class SavingsAccount extends GenericBankAccount{
 		}
 	}
 	
-	public void setInterestRate(double i){
+	public void setInterestRate(double i)
+	{
 		interestRate = i;
 	}
 	
-	public double getInterestRate(){
+	public double getInterestRate()
+	{
 		return interestRate;
 	}
 	
     public String toString()
     {
-    	return "Savings Account Balance: " + balance;
+    	NumberFormat formatter = NumberFormat.getCurrencyInstance();
+    	String moneyString = "Savings Account Balance: " + formatter.format(balance);
+    	return moneyString;
     }	
 }

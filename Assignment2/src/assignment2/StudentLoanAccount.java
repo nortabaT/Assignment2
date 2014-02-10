@@ -1,5 +1,7 @@
 package assignment2;
 
+import java.text.NumberFormat;
+
 public class StudentLoanAccount extends SavingsAccount {
 
 	public StudentLoanAccount(int accountNum, double initialBalance) {
@@ -12,6 +14,8 @@ public class StudentLoanAccount extends SavingsAccount {
 	
     public String toString()
     {
-    	return "Student Loan Account Balance: " + balance;
+    	NumberFormat formatter = NumberFormat.getCurrencyInstance();
+    	String moneyString = "Savings Account Balance: " + formatter.format(balance);
+    	return moneyString;
     }	
 }

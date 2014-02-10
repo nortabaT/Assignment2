@@ -1,5 +1,7 @@
 package assignment2;
 
+import java.text.NumberFormat;
+
 public class CheckingAccount extends GenericBankAccount{
 
 	public CheckingAccount(int accountNum, double initBalance) 
@@ -14,7 +16,9 @@ public class CheckingAccount extends GenericBankAccount{
 
     public String toString()
     {
-    	return "Checking Account Balance: " + balance;
+    	NumberFormat formatter = NumberFormat.getCurrencyInstance();
+    	String moneyString = "Savings Account Balance: " + formatter.format(balance);
+    	return moneyString;
     }
 
 	public boolean calculateInterest() 
