@@ -2,8 +2,20 @@ package assignment2;
 
 import java.text.NumberFormat;
 
-public class CheckingAccount extends GenericBankAccount{
+/**
+ * Extends GenericBankAccount.
+ * Returns false on calculating interest (checking accounts don't provide interest over time)
+ * @see GenericBankAccount
+ *
+ */
+public class CheckingAccount extends GenericBankAccount
+{
 
+	/**
+	 * Creates a checking account
+	 * @param accountNum account number for customer (int)
+	 * @param initBalance starting balance (double)
+	 */
 	public CheckingAccount(int accountNum, double initBalance) 
 	{
 		super(accountNum, initBalance);
@@ -13,19 +25,17 @@ public class CheckingAccount extends GenericBankAccount{
 	{
 		super(initBalance);
 	}
-	/*
-	 * (non-Javadoc)
-	 * @see assignment2.GenericBankAccount#toString()
-	 */
+
     public String toString()
     {
     	NumberFormat formatter = NumberFormat.getCurrencyInstance();
     	String moneyString = "Checking Account Balance: " + formatter.format(balance);
     	return moneyString;
     }
-    /*
-     * (non-Javadoc)
-     * @see assignment2.GenericBankAccount#calculateInterest()
+
+    /**
+     * Checking Accounts don't provide interest
+     * @return false
      */
 	public boolean calculateInterest() 
 	{

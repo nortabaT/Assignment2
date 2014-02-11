@@ -2,7 +2,12 @@ package assignment2;
 import java.util.ArrayList;
 
 
-public class Client {
+public class Client 
+{
+	static final int CONTINUE = 0;
+	static final int QUIT = 1;
+	static final int EXIT = -1;
+	static final int CANCEL = 2;
 	
 	static ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
 	static ArrayList<String> transactions = new ArrayList<String>();
@@ -15,12 +20,14 @@ public class Client {
 		promptAndProcessInput();
 		outputText.goodbye(accounts);
 	}
-	/*
+	
+	/**
 	 * Prompts clients input and handles invalid inputs
 	 */
 	public static void promptAndProcessInput()
 	{
-		while ( outputText.greeting() == 0)
+		int userChoice = outputText.greeting();
+		while (userChoice == CONTINUE)
 		{
 			String input = outputText.getTransaction();
 			if (input != null )
@@ -41,9 +48,11 @@ public class Client {
 			{
 				outputText.showError();
 			}
+			userChoice = outputText.greeting();
 		}
 	}
-	/* 
+	
+	/**
 	 * Creates the initial customers 
 	 */
 	public static void initCustomers()
@@ -53,12 +62,13 @@ public class Client {
 			accounts.add(new BankAccount(new Customer(initialNames[i], i+1)));
 		}	
 	}
-	/*
+	/**
 	 * evaluates the users input and returns the appropriate transaction type or false for an invalid transaction
 	 * @param wd	boolean for withdrawal or deposit transaction
 	 * @param t		boolean for a transfer transaction
 	 * @param i		boolean for an interest  transaction
 	 * @param g   	boolean for current balance transaction
+	 * @return 		true if input is valid, false if no match on input
 	 */
 	private static boolean checkInput(String input)
 	{

@@ -2,19 +2,28 @@ package assignment2;
 
 import java.text.NumberFormat;
 
-public class StudentLoanAccount extends SavingsAccount {
+/**
+ * Extends SavingsAccount
+ * @see SavingsAccount
+ */
+public class StudentLoanAccount extends SavingsAccount 
+{
 
-	public StudentLoanAccount(int accountNum, double initialBalance) {
+	/**
+	 * Creates a student loan account (extends savings account)
+	 * @param accountNum number of this account (int)
+	 * @param initialBalance starting balance (double)
+	 */
+	public StudentLoanAccount(int accountNum, double initialBalance) 
+	{
 		super(accountNum, initialBalance);
 	}
 
-	public StudentLoanAccount(double initialBalance) {
+	public StudentLoanAccount(double initialBalance)
+	{
 		super(initialBalance);
 	}
-	/*
-	 * (non-Javadoc)
-	 * @see assignment2.SavingsAccount#toString()
-	 */
+
     public String toString()
     {
     	NumberFormat formatter = NumberFormat.getCurrencyInstance();

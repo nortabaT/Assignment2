@@ -1,6 +1,14 @@
 package assignment2;
 
-public abstract class GenericBankAccount {
+
+/**
+ * Abstract class GenericBankAccount is used to model the skeleton of a bank account
+ * it contains the basics of a bank account, including withdraw, deposit, an account number and balance
+ * 
+ * includes an abstract method called 'calculateInterest' which is left up to the specific bank account to decide what to do
+ */
+public abstract class GenericBankAccount 
+{
 	
 	protected int accountNumber;
 	protected double balance;
@@ -76,5 +84,9 @@ public abstract class GenericBankAccount {
     	return "Balance: " + balance;
     }
     
+    /**
+     * Abstract method that will decide how to calculate interest (if any)
+     * @return true of false if successful or not
+     */
     public abstract boolean calculateInterest();
 }
