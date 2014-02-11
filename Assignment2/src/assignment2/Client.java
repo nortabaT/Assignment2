@@ -1,6 +1,12 @@
 package assignment2;
 import java.util.ArrayList;
 
+/*
+* Assignment 2 - Bank Accounts
+* EE 422c Perry Spring 2014
+* Curtis Martin
+* Brandon Dsouza  bjd879 (16695)
+*/
 
 public class Client 
 {
